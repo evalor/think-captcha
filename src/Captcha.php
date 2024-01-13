@@ -167,7 +167,7 @@ class Captcha
      * @param bool        $api
      * @return Response
      */
-    public function create(string $config = null, bool $api = false): Response
+    public function create(string $config = null, bool $api = false)
     {
         $this->configure($config);
 
@@ -236,6 +236,14 @@ class Captcha
         imagepng($this->im);
         $content = ob_get_clean();
         imagedestroy($this->im);
+
+        // api调用
+        if ($api) {
+            return [
+                'code' => implode('', $text),
+                'img' => 'data:image/png;base64,' . chunk_split(base64_encode($content))
+            ];
+        }
 
         return response($content, 200, ['Content-Length' => strlen($content)])->contentType('image/png');
     }
