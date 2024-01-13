@@ -1,6 +1,6 @@
 {
-    "name": "topthink/think-captcha",
-    "description": "captcha package for thinkphp",
+    "name": "evalor/think-captcha",
+    "description": "captcha package for thinkphp support api",
     "authors": [
         {
             "name": "yunwuxin",
@@ -26,7 +26,7 @@
             ],
             "config":{
                 "captcha": "src/config.php"
-            }            
+            }
         }
     }
 }
